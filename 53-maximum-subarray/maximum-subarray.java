@@ -1,5 +1,6 @@
 class Solution {
     public int maxSubArray(int[] nums) {
+        // kadane algorithm
         int max = nums[0];
         int curr = 0;
 
