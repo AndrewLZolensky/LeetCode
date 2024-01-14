@@ -4,15 +4,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        a1 = [1]
-        a2 = [1]
         n = len(nums)
-        for i in range(0, n-1):
-            a1.append(a1[i]*nums[i])
-            a2.append(a2[i]*nums[-(i+1)])
-        answer = []
-        for i in range(0, n):
-            answer.append(a1[i]*a2[-(i+1)])
+        answer = [1] * n
+
+        leftmul = 1
+        for i in range(n-1):
+            leftmul *= nums[i]
+            answer[i+1] *= leftmul
+        
+        rightmul = 1
+        for i in range(1, n):
+            rightmul *= nums[-i]
+            answer[-(i+1)] *= rightmul
 
         return answer
         
