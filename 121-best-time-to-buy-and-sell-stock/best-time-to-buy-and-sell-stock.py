@@ -4,18 +4,14 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        maxp = 0
-        running = 0
-        for i in range(len(prices) - 1):
-            gain = prices[i+1] - prices[i]
-            # if we lose money this day, update max
-            if gain < 0:
-                if running > maxp:
-                    maxp = running
-            running += gain
-            if running < 0:
-                running = 0
-        # check last pair
-        if running > maxp:
-            maxp = running
-        return maxp
+        maxP = 0
+        left = 0
+        right = 1
+        while right < len(prices):
+            gain = prices[right] - prices[left]
+            if gain > 0:
+                maxP = max(gain, maxP)
+            else:
+                left=right
+            right += 1
+        return maxP
