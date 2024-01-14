@@ -7,7 +7,7 @@ var removeDuplicates = function(nums) {
     let bottom = 0;
     let prev = -(nums[0] + 1);
 
-    for (let i = 0; i < nums.length; i++) {
+    while (top < nums.length) {
         if (nums[top] != prev) {
             nums[bottom] = nums[top];
             bottom++;
