@@ -8,12 +8,10 @@ class Solution(object):
         bottom = 0
         prev = -(nums[0]+1)
         while (top < len(nums)):
-            if (nums[top] == prev):
-                top += 1
-            else:
+            if (nums[top] != prev):
                 nums[bottom] = nums[top]
-                top += 1
                 bottom += 1
+            top += 1
             prev = nums[top - 1]
         return bottom
         
