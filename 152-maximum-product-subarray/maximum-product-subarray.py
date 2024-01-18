@@ -4,16 +4,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        min_prod = max_prod = ans = nums[0]
-
-        for value in nums[1:]:
-            max_temp = max_prod * value
-            min_temp = min_prod * value
-
-            min_prod = min(max_temp, min_temp, value)
-            max_prod = max(max_temp, min_temp, value)
-            
-            ans = max(ans, max_prod)
-
+        minprod = maxprod = ans = nums[0]
+        for n in nums[1:]:
+            min_temp = minprod*n
+            max_temp = maxprod*n
+            maxprod = max(min_temp, max_temp, n)
+            minprod = min(min_temp, max_temp, n)
+            ans = max(ans, maxprod)
         return ans
         
