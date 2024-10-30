@@ -4,18 +4,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        write = 0
-        read = 0
-        prev1 = 0.5
-        prev2 = 0.5
-        while (read < len(nums)):
-            if (nums[read] == prev1) and (nums[read] == prev2):
-                pass
-            else:
-                nums[write] = nums[read]
-                write += 1
-            prev2 = prev1
-            prev1 = nums[read]
-            read += 1
-        return write
+        if len(nums) <= 2:
+            return len(nums)
+        
+        k = 2
+        for i in range(2, len(nums)):
+            if nums[i] != nums[k - 2]:
+                nums[k] = nums[i]
+                k += 1
+        return k
         
