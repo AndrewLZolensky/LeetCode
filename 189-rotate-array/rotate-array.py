@@ -7,8 +7,4 @@ class Solution(object):
         """
         n = len(nums)
         p = k % n
-        rotated = [0] * n
-        rotated[:p] = nums[(n-p):]
-        rotated[p:] = nums[:(n-p)]
-        for i in range(n):
-            nums[i] = rotated[i]
+        nums[:p], nums[p:] = nums[(n-p):], nums[:(n-p)]
