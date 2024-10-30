@@ -6,10 +6,9 @@ class Solution(object):
         :rtype: None Do not return anything, modify nums in-place instead.
         """
         n = len(nums)
+        p = k % n
         rotated = [0] * n
-        for i in range(n):
-            index = int((i + k) % n)
-            rotated[index] = nums[i]
+        rotated[:p] = nums[(n-p):]
+        rotated[p:] = nums[:(n-p)]
         for i in range(n):
             nums[i] = rotated[i]
-        
