@@ -18,4 +18,3 @@ class Solution(object):
             prev1 = nums[read]
             read += 1
         return write
-        
