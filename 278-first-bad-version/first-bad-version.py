@@ -13,9 +13,9 @@ class Solution(object):
         left = 1
         right = n
         while (left <= right):
-            mid = int(left + right)/2
-            isbad = isBadVersion(mid)
-            if isbad:
+            mid = int((left + right) / 2)
+            bad = isBadVersion(mid)
+            if bad:
                 first = mid
                 right = mid - 1
             else:
