@@ -15,12 +15,9 @@ class Solution(object):
         # add 1 for each child
         if root == None:
             return 0
-        return self.dfs(root)
-    
-    def dfs(self, node):
         count = 1
-        if node.left:
-            count += self.dfs(node.left)
-        if node.right:
-            count += self.dfs(node.right)
+        if root.left:
+            count += self.countNodes(root.left)
+        if root.right:
+            count += self.countNodes(root.right)
         return count
