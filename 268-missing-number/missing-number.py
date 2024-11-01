@@ -4,9 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        total = 0
-        for i in range(len(nums) + 1):
-            total += i
+        n = len(nums)
+        total = (n * (n + 1)) / 2
         for el in nums:
             total -= el
         return total
