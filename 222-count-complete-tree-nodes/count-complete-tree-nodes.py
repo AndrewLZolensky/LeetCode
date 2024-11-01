@@ -11,19 +11,16 @@ class Solution(object):
         :type root: Optional[TreeNode]
         :rtype: int
         """
-        # do bfs
+        # do dfs
         # add 1 for each child
         if root == None:
             return 0
-        count = 0
-        q = deque()
-        q.append(root)
-        while (len(q) > 0):
-            curr = q.popleft()
-            count += 1
-            if (curr.left != None):
-                q.append(curr.left)
-            if (curr.right != None):
-                q.append(curr.right)
+        return self.dfs(root)
+    
+    def dfs(self, node):
+        count = 1
+        if node.left:
+            count += self.dfs(node.left)
+        if node.right:
+            count += self.dfs(node.right)
         return count
-        
