@@ -5,25 +5,15 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        if (len(s) != len(t)):
+        if len(s) != len(t):
             return False
 
-        freq = {}
-        n = len(s)
-        for i in range(n):
-            s_sym = s[i]
-            t_sym = t[i]
-            if s_sym in freq.keys():
-                freq[s_sym] += 1
-            else:
-                freq[s_sym] = 1
-            if t_sym in freq.keys():
-                freq[t_sym] -= 1
-            else:
-                freq[t_sym] = -1
-        for key in freq.keys():
-            num = freq[key]
-            if num != 0:
+        counter = {}
+        for char in s:
+            counter[char] = counter.get(char, 0) + 1
+        for char in t:
+            if char not in counter or counter[char] == 0:
                 return False
+            counter[char] -= 1
         return True
         
