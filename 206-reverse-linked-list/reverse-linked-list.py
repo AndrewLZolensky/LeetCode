@@ -9,19 +9,16 @@ class Solution(object):
         :type head: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        new_head = self.reverseListHelper(head)
-        return new_head
-        
-    def reverseListHelper(self, node):
-        if (node == None):
-            return None
-        elif (node.next == None):
-            return node
-        else:
-            new_head = self.reverseListHelper(node.next)
-            node.next.next = node
-            node.next = None
-            return new_head
+        last = None
+        curr_node = None
+        next_node = head
+        while (next_node != None):
+            curr_node = next_node
+            next_node = curr_node.next
+            curr_node.next = last
+            last = curr_node
+        head = curr_node
+        return head
         
         
         
