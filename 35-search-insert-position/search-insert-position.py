@@ -12,16 +12,11 @@ class Solution(object):
             mid = (low + high) // 2 # calculate mid
             if nums[mid] == target: # if we found target, return index
                 return mid
-            if nums[low] == nums[high]: # if we have singleton, return index to left or right
-                if target > nums[high]:
-                    return high + 1
-                else:
-                    return low
-            if nums[mid] > target:
+            if nums[mid] > target: # otherwise recurse on correct side
                 high = mid - 1
             if nums[mid] < target:
                 low = mid + 1
         
-        return low
+        return low 
         
         
