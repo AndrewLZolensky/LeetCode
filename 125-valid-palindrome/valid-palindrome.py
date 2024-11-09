@@ -7,23 +7,23 @@ class Solution(object):
         s = s.lower()
         s = "".join([c for c in s if c.isalnum()])
         n = len(s)
+
         if n == 0 or n == 1:
             return True
-
-        q = []
+        
+        stack = []
         i1 = 0
         i2 = 0
-        while (i2 < n - 1):
-            q.append(s[i1])
+        while i2 < n - 1:
+            stack.append(s[i1])
             i1 += 1
             i2 += 2
         
-        if i2 == n-1:
+        if i2 == n - 1:
             i1 += 1
         
         while i1 < n:
-            compare = q.pop()
-            if s[i1] != compare:
+            if s[i1] != stack.pop():
                 return False
             i1 += 1
         
