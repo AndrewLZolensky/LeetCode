@@ -15,8 +15,9 @@ class Solution:
             counter += 1
             if counter < 32:
                 rev <<= 1
+        counter += 1
 
-        while counter < 31:
+        while counter < 32:
             rev <<= 1
             counter += 1
         return int(rev)
