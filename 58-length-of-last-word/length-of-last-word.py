@@ -4,8 +4,5 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        if len(s) == 0:
-            return 0
-        modded = " ".join(s.split())
-        return len(modded.split(" ")[-1])
+        return len(s.split()[-1])
         
