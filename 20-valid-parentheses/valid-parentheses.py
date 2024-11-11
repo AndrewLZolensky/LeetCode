@@ -5,18 +5,23 @@ class Solution(object):
         :rtype: bool
         """
 
-        if len(s) == 0: # empty is valid
-            return True
-        
-        closed_to_open = {')': '(', '}': '{', ']': '['} # store pairings
-        openers = ['(', '{', '[']
+        contrast = {
+            '(':')',
+            '[':']',
+            '{':'}'
+        }
+
+        opener = ['(','[','{']
+
         stack = []
 
-        for c in s:
-            if c in openers:
-                stack.append(c)
+
+        for item in s:
+            if item in contrast:
+                stack.append(item)
             else:
-                if not stack or stack.pop() != closed_to_open[c]:
+                if not stack or contrast[stack.pop()] != item:
                     return False
+            
 
         return len(stack) == 0
