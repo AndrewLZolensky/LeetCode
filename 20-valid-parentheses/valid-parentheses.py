@@ -9,14 +9,14 @@ class Solution(object):
             return True
         
         closed_to_open = {')': '(', '}': '{', ']': '['} # store pairings
+        openers = ['(', '{', '[']
         stack = []
 
         for c in s:
-            if c in closed_to_open.values():
+            if c in openers:
                 stack.append(c)
             else:
-                if not stack or stack[-1] != closed_to_open[c]:
+                if not stack or stack.pop() != closed_to_open[c]:
                     return False
-                stack.pop()
 
         return len(stack) == 0
