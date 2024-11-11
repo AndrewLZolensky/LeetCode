@@ -4,24 +4,16 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-
-        contrast = {
-            '(':')',
-            '[':']',
-            '{':'}'
-        }
-
-        opener = ['(','[','{']
-
+        
+        closed_to_open = {')': '(', '}': '{', ']': '['} # store pairings
+        openers = ['(', '{', '[']
         stack = []
 
-
-        for item in s:
-            if item in contrast:
-                stack.append(item)
+        for c in s:
+            if c in openers:
+                stack.append(c)
             else:
-                if not stack or contrast[stack.pop()] != item:
+                if not stack or stack.pop() != closed_to_open[c]:
                     return False
-            
 
         return len(stack) == 0
