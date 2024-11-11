@@ -11,10 +11,11 @@ class Solution(object):
         high = x // 2
         while not (high < low):
             mid = (low + high)//2
-            if mid * mid > x:
+            sq = mid * mid
+            if sq == x:
+                return mid
+            if sq > x:
                 high = mid - 1
             else:
-                if (mid + 1) * (mid + 1) > x:
-                    return mid
                 low = mid + 1
-        return -1
+        return high
