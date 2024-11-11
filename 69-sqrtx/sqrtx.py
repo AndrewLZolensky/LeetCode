@@ -4,11 +4,11 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        if x == 0:
-            return 0
+        if x < 2:
+            return x
         
-        low = 0
-        high = x
+        low = 1
+        high = x // 2
         while not (high < low):
             mid = (low + high)//2
             if mid * mid > x:
