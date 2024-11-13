@@ -4,14 +4,18 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        maxP = 0
         left = 0
-        right = 1
+        right = 0
+        high = 0
+
         while right < len(prices):
-            gain = prices[right] - prices[left]
-            if gain > 0:
-                maxP = max(gain, maxP)
-            else:
-                left=right
+            buy = prices[left]
+            sell = prices[right]
+            profit = sell - buy
+            if sell < buy:
+                left = right
+            elif profit > high:
+                high = profit
             right += 1
-        return maxP
+        
+        return high
