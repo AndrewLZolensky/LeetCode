@@ -20,12 +20,10 @@ class Solution(object):
         root = TreeNode(nums[mid])
 
         # get left tree
-        left = nums[:mid]
-        root.left = self.sortedArrayToBST(left)
+        root.left = self.sortedArrayToBST(nums[:mid])
 
         # get right tree
-        right = nums[mid + 1:]
-        root.right = self.sortedArrayToBST(right)
+        root.right = self.sortedArrayToBST(nums[mid + 1:])
 
         return root
         
