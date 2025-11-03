@@ -12,9 +12,5 @@ class Solution(object):
         """
         if root == None:
             return 0
-        max_left = self.maxDepth(root.left) + 1
-        max_right = self.maxDepth(root.right) + 1
-        if max_left > max_right:
-            return max_left
-        return max_right
+        return max([self.maxDepth(root.left) + 1, self.maxDepth(root.right) + 1])
         
