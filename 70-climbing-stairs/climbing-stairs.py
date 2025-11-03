@@ -4,15 +4,10 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n == 0:
-            return 0
-        if n == 1:
+        if n == 0 or n == 1:
             return 1
-        if n == 2:
-            return 2
-        arr = [0] * n
-        arr[:2] = [1, 2]
-        for i in range(2, n):
-            arr[i] = arr[i-1] + arr[i-2]
-        return arr[n-1]
+        nums = [1, 1]
+        for i in range(n - 1):
+            nums.append(nums[-1] + nums[-2])
+        return nums[-1]
         
