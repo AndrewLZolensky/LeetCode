@@ -9,8 +9,8 @@ class Solution(object):
             next_val = lp[-1] * nums[i]
             lp.append(next_val)
         rp = [1]
-        for i in range(1, len(nums)):
-            next_val = rp[-1] * nums[-i]
+        for i in range(len(nums) - 1):
+            next_val = rp[-1] * nums[-i - 1]
             rp.append(next_val)
         rp.reverse()
         res = []
