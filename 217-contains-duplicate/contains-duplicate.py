@@ -4,5 +4,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        return len(nums) - len(set(nums)) != 0
+        index = {}
+        for num in nums:
+            if num in index:
+                return True
+            index[num] = None
+        return False
         
