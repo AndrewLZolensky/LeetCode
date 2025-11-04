@@ -4,17 +4,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        lp = [1]
-        rp = [1]
+        prods = [1]
         for i in range(len(nums) - 1):
-            next_lval = lp[-1] * nums[i]
-            next_rval = rp[-1] * nums[-i - 1]
-            lp.append(next_lval)
-            rp.append(next_rval)
-        rp.reverse()
-        res = []
-        for i in range(len(lp)):
-            res.append(lp[i] * rp[i])
-        return res
+            prods.append(nums[i] * prods[-1])
+        multiplier = 1
+        for i in range(1, len(nums) + 1):
+            prods[-i] *= multiplier
+            multiplier *= nums[-i]
+        return prods
 
         
