@@ -5,13 +5,12 @@ class Solution(object):
         :rtype: List[int]
         """
         lp = [1]
-        for i in range(len(nums) - 1):
-            next_val = lp[-1] * nums[i]
-            lp.append(next_val)
         rp = [1]
         for i in range(len(nums) - 1):
-            next_val = rp[-1] * nums[-i - 1]
-            rp.append(next_val)
+            next_lval = lp[-1] * nums[i]
+            next_rval = rp[-1] * nums[-i - 1]
+            lp.append(next_lval)
+            rp.append(next_rval)
         rp.reverse()
         res = []
         for i in range(len(lp)):
