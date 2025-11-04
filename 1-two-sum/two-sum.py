@@ -5,8 +5,12 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        complements = {}
+        index = {}
         for i, num in enumerate(nums):
-            if num in complements:
-                return complements[num], i
-            complements[target - num] = i
+            complement = target - num
+            if complement in index:
+                return [i, index[complement]]
+            index[num] = i
+        return [0,0]
+
+        
