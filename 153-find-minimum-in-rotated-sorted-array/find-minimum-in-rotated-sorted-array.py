@@ -4,12 +4,23 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        start = 0
-        end = len(nums) - 1
-        while start < end:
-            middle = (end + start) // 2
-            if (nums[middle] > nums[end]):
-                start = middle + 1
+
+        # handle base cases len(nums) <= 2
+        if len(nums) == 1:
+            return nums[0]
+        if len(nums) == 2:
+            if nums[0] > nums[1]:
+                return nums[1]
             else:
-                end = middle
-        return nums[start]     
+                return nums[0]
+
+        # binary search
+        mid = int(len(nums) / 2)
+        lo = 0
+        hi = len(nums) - 1
+        if nums[mid] > nums[hi]:
+            return self.findMin(nums[mid:])
+        return self.findMin(nums[:mid + 1])
+
+        
+        
